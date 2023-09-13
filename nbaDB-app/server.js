@@ -7,6 +7,8 @@ let playerRoutes = require('./routes/playerRoutes');
 let teamRoutes = require('./routes/teamRoutes');
 let apiRoutes = require('./routes/apiRoutes');
 
+let Controllers = require("./controllers")
+
 
 app.use(express.json());
 
@@ -21,4 +23,6 @@ app.use('/api/api', apiRoutes);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
+  Controllers.apiController.initialiseTeams();
+
 });
