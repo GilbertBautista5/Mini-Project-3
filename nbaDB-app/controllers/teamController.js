@@ -36,7 +36,7 @@ const createTeam = (data, res) => {
 const updateTeam = (req, res) => {
  
   console.log(req.body)
-  Models.Team.findByIdAndUpdate(req.params.id, req.body, {useFindAndModify: false })
+  Models.Team.updateOne({id: req.params.id}, req.body )
   .then(data => res.send({result: 200, data: data}))
   .catch(err => {
   console.log(err);
@@ -46,8 +46,7 @@ const updateTeam = (req, res) => {
 
   const deleteTeam = (req, res) => {
  
-  Models.Team.findByIdAndRemove(req.params.id, req.body, {
-  useFindAndModify: false })
+    Models.Team.deleteOne({id:req.params.id})
   .then(data => res.send({result: 200, data: data}))
   .catch(err => {
   console.log(err);
