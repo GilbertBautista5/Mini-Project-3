@@ -6,6 +6,11 @@ router.get("/", (req, res) => {
   Controllers.playerController.getPlayers(res)
 });
 
+router.get("/:id", (req, res) => {
+  Controllers.playerController.getOnePlayer(req, res);
+});
+
+
 router.post("/create", (req, res) => {
   Controllers.playerController.createPlayer(req.body, res);
 });

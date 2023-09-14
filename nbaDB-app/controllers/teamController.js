@@ -13,7 +13,7 @@ const getTeams = (res) => {
 
 const getOneTeam = (req, res) => {
  
-  Models.Team.findById(req.params.id)
+  Models.Team.findOne({id:req.params.id})
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
       console.log(err);

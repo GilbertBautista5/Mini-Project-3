@@ -11,6 +11,16 @@ const getPlayers = (res) => {
     });
 };
 
+const getOnePlayer = (req, res) => {
+ 
+  Models.Player.findOne({id:req.params.id})
+    .then((data) => res.send({ result: 200, data: data }))
+    .catch((err) => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
+};
+
 const createPlayer = (data, res) => {
   
   console.log(data);
@@ -26,7 +36,7 @@ const createPlayer = (data, res) => {
 const updatePlayer = (req, res) => {
   
   console.log(req.body)
-  Models.Player.findByIdAndUpdate(req.params.id, req.body, {useFindAndModify: false })
+  Models.Player.updateOne(req.params.id, req.body, {useFindAndModify: false })
   .then(data => res.send({result: 200, data: data}))
   .catch(err => {
   console.log(err);
@@ -36,8 +46,7 @@ const updatePlayer = (req, res) => {
 
   const deletePlayer = (req, res) => {
   
-  Models.Player.findByIdAndRemove(req.params.id, req.body, {
-  useFindAndModify: false })
+  Models.Player.deleteOne({id:req.params.id}, {useFindAndModify: false })
   .then(data => res.send({result: 200, data: data}))
   .catch(err => {
   console.log(err);
@@ -47,6 +56,7 @@ const updatePlayer = (req, res) => {
 
 module.exports = {
   getPlayers,
+  getOnePlayer,
   createPlayer,
   updatePlayer,
   deletePlayer,
