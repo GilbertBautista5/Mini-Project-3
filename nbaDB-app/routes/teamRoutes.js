@@ -3,18 +3,22 @@ let router = express.Router();
 let Controllers = require("../controllers"); //index.js
 
 router.get("/", (req, res) => {
-  Controllers.userController.getTeams(res)
+  Controllers.teamController.getTeams(res)
+});
+
+router.get("/:id", (req, res) => {
+  Controllers.teamController.getOneTeam(req, res);
 });
 
 router.post("/create", (req, res) => {
-  Controllers.userController.createTeam(req.body, res);
+  Controllers.teamController.createTeam(req.body, res);
 });
 
 router.put("/:id", (req, res) => {
-  Controllers.userController.updateTeam(req, res);
+  Controllers.teamController.updateTeam(req, res);
 });
 router.delete("/:id", (req, res) => {
-  Controllers.userController.deleteTeam(req, res);
+  Controllers.teamController.deleteTeam(req, res);
 });
 
 module.exports = router;

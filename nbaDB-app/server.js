@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use('/api/players', playerRoutes);
-app.use('/api/team', teamRoutes);
+app.use('/api/teams', teamRoutes);
 app.use('/api/api', apiRoutes);
 
 const PORT = process.env.PORT || 8080;

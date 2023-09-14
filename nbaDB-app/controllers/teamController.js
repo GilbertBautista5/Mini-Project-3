@@ -11,6 +11,16 @@ const getTeams = (res) => {
     });
 };
 
+const getOneTeam = (req, res) => {
+ 
+  Models.Team.findById(req.params.id)
+    .then((data) => res.send({ result: 200, data: data }))
+    .catch((err) => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
+};
+
 const createTeam = (data, res) => {
  
   console.log(data);
@@ -47,6 +57,7 @@ const updateTeam = (req, res) => {
 
 module.exports = {
   getTeams,
+  getOneTeam,
   createTeam,
   updateTeam,
   deleteTeam,
