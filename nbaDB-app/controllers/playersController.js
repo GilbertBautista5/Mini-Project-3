@@ -36,7 +36,7 @@ const createPlayer = (data, res) => {
 const updatePlayer = (req, res) => {
   
   console.log(req.body)
-  Models.Player.updateOne(req.params.id, req.body, {useFindAndModify: false })
+  Models.Player.updateOne({id: req.params.id}, req.body )
   .then(data => res.send({result: 200, data: data}))
   .catch(err => {
   console.log(err);
@@ -46,7 +46,7 @@ const updatePlayer = (req, res) => {
 
   const deletePlayer = (req, res) => {
   
-  Models.Player.deleteOne({id:req.params.id}, {useFindAndModify: false })
+  Models.Player.deleteOne({id:req.params.id})
   .then(data => res.send({result: 200, data: data}))
   .catch(err => {
   console.log(err);
